@@ -39,5 +39,6 @@ namespace RPG
         public double Luck { get => luck;  }
         public double Hitpoints { get => hpmodifier * constitution * (level + 1); }
         public string Name { get => name;}
+        
     }
 }

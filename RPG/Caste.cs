@@ -14,6 +14,8 @@ namespace RPG
         protected int cmod;
         protected int lmod;
 
+        /*  Használható itemek :( */
+
         public Caste(int smod, int dmod, int imod, int cmod, int lmod)
         {
             this.smod = smod;

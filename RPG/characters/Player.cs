@@ -10,9 +10,11 @@ namespace RPG.characters
     {
         private int xp;
 
+        private int test;
+
         /* Felszerelés rendszer helye */
 
-        public Player(int level, int strength, int dexterity, int intelligence, int constitution, int luck, int xp, string name) : base(level, strength, dexterity, intelligence, constitution, luck, name)
+        public Player(int level, int strength, int dexterity, int intelligence, int constitution, int luck, int xp, string name, Caste caste) : base(level, strength, dexterity, intelligence, constitution, luck, name, caste)
         {
             if(xp == 0)
             {
@@ -36,10 +38,13 @@ namespace RPG.characters
             }
         }
 
-        public void changeName(string name)
-        {
-            //Azért nem tulajdonság, mert ellenőrizni akarjuk majd hogy ne legyen egyezés.
-            this.name = name;
+
+        public new string Name { get => name;
+            set {
+                //Foglalt név ellenőrzés :(
+                name = value;
+            }
         }
+        
     }
 }
