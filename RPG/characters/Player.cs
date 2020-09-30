@@ -9,33 +9,65 @@ namespace RPG.characters
     class Player : Character
     {
         private int xp;
+        protected string gender;
+        private bool EmptyInventory;
 
-        private int test;
+        Item[] inventory;
+
 
         /* Felszerelés rendszer helye */
 
-        public Player(int level, int strength, int dexterity, int intelligence, int constitution, int luck, int xp, string name, Caste caste) : base(level, strength, dexterity, intelligence, constitution, luck, name, caste)
+        public Player(int level, int strength, int dexterity, int intelligence, int constitution, int luck, int xp, string name, Caste caste, string gender, Item[] inventory) : base(level, strength, dexterity, intelligence, constitution, luck, name, caste)
         {
-            if(xp == 0)
-            {
-                getXP(0);
-            }
+            this.gender = gender;
+            this.xp = xp;
             hpmodifier = 5;
+            
+            foreach(Item item in inventory)
+            {
+                if(item != null)
+                {
+                    EmptyInventory = false;
+                }
+            }
+
+            if (EmptyInventory)
+            {
+                this.inventory = inventory;
+            }
+            else
+            {
+                this.inventory = new Item[12];
+            }
+            
         }
 
         public int Xp { get => xp; }
 
-        public void getXP(int xp)
+        public int Level { get => calculateLevel(); }
+        
+        /*private int calculateLevel(int xpmod, int lvl)
         {
-            if (this.xp - xp <= 0)
-            {
-                level++;
-                xp = 400 + (level - 1)  * 500;
+            if(xpmod >= 400 + (lvl - 1) * 500){
+                Console.WriteLine("ret1");
+                return calculateLevel(xpmod - 400 + (lvl - 1) * 500, ++lvl);
             }
-            else
-            {
-                this.xp =- xp;
+            else{
+                Console.WriteLine("ret2");
+                return lvl;
             }
+        }*/
+
+        private int calculateLevel()
+        {
+            int xpmod = xp;
+            int lvl = 1;
+            while(xpmod >= 400 + (lvl - 1) * 500)
+            {
+                xpmod -= 400 + (lvl - 1) * 500;
+                lvl++;
+            }
+            return lvl;
         }
 
 

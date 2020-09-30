@@ -11,6 +11,7 @@ namespace RPG
         protected int level;
         protected double hpmodifier;
         protected string name;
+        
 
         protected Caste caste;
 
@@ -31,6 +32,7 @@ namespace RPG
             this.name = name;
             this.caste = caste;
         }
+
 
         public double Strength { get => strength; }
         public double Dexterity { get => dexterity;  }
