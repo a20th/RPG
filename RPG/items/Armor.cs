@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace RPG.items
 {
 
-    class Armor : Item
+    abstract class Armor : Item
     {
         private double armor;
-        public Armor(string[] usableSlot, int id, int stre, int dext, int inte, int cons, int luck, Caste usableBy, double armor) : base(usableSlot, id, stre, dext, inte, cons, luck, usableBy)
+        public Armor(string name, int id, int stre, int dext, int inte, int cons, int luck, Caste usableBy, double armor) : base(name, id, stre, dext, inte, cons, luck, usableBy)
         {
             this.armor = armor;
         }

@@ -8,7 +8,7 @@ namespace RPG
 {
     abstract class Item
     {
-        protected string[] useableSlot;
+        protected string name;
         protected int id;
 
         protected int stre;
@@ -19,9 +19,11 @@ namespace RPG
 
         protected Caste usableBy;
 
-        protected Item(string[] useableSlot, int id, int stre, int dext, int inte, int cons, int luck, Caste usableBy)
+        public abstract Type CanBePlaced { get; }
+
+        protected Item(string name, int id, int stre, int dext, int inte, int cons, int luck, Caste usableBy)
         {
-            this.useableSlot = useableSlot;
+            this.name = name;
             this.id = id;
             this.stre = stre;
             this.dext = dext;
@@ -30,5 +32,12 @@ namespace RPG
             this.luck = luck;
             this.usableBy = usableBy;
         }
+
+        internal Item()
+        {
+
+        }
+
+        
     }
 }

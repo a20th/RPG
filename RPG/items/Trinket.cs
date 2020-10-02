@@ -8,10 +8,14 @@ namespace RPG.items
 {
     class Trinket : Item
     {
-        protected new static string[] useableSlot = { "Trinket1", "Trinket2" };
-
-        public Trinket(int id, int stre, int dext, int inte, int cons, int luck, Caste usableBy) : base(useableSlot, id, stre, dext, inte, cons, luck, usableBy)
+        public Trinket()
         {
         }
+
+        public Trinket(int id, int stre, int dext, int inte, int cons, int luck, Caste usableBy, string name) : base(name, id, stre, dext, inte, cons, luck, usableBy)
+        {
+        }
+
+        public override Type CanBePlaced => throw new NotImplementedException();
     }
 }

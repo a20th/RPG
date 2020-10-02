@@ -12,18 +12,18 @@ namespace RPG.characters
         protected string gender;
         private bool EmptyInventory;
 
-        Item[] inventory;
+        ItemSlot[] inventory;
 
 
         /* Felszerelés rendszer helye */
 
-        public Player(int level, int strength, int dexterity, int intelligence, int constitution, int luck, int xp, string name, Caste caste, string gender, Item[] inventory) : base(level, strength, dexterity, intelligence, constitution, luck, name, caste)
+        public Player(int level, int strength, int dexterity, int intelligence, int constitution, int luck, int xp, string name, Caste caste, string gender, ItemSlot[] inventory) : base(level, strength, dexterity, intelligence, constitution, luck, name, caste)
         {
             this.gender = gender;
             this.xp = xp;
             hpmodifier = 5;
             
-            foreach(Item item in inventory)
+            foreach(ItemSlot item in inventory)
             {
                 if(item != null)
                 {
@@ -37,7 +37,7 @@ namespace RPG.characters
             }
             else
             {
-                this.inventory = new Item[12];
+                this.inventory = new ItemSlot[12];
             }
             
         }

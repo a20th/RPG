@@ -11,7 +11,6 @@ namespace RPG
         protected int level;
         protected double hpmodifier;
         protected string name;
-        
 
         protected Caste caste;
 
