@@ -20,8 +20,14 @@ namespace RPG
         protected Caste usableBy;
 
         public abstract Type CanBePlaced { get; }
+        public int Stre { get => stre; }
+        public int Dext { get => dext; }
+        public int Inte { get => inte; }
+        public int Cons { get => cons; }
+        public int Luck { get => luck; }
+        public double Price { get; }
 
-        protected Item(string name, int id, int stre, int dext, int inte, int cons, int luck, Caste usableBy)
+        protected Item(string name, int id, int stre, int dext, int inte, int cons, int luck, Caste usableBy, double price)
         {
             this.name = name;
             this.id = id;
@@ -30,6 +36,7 @@ namespace RPG
             this.inte = inte;
             this.cons = cons;
             this.luck = luck;
+            Price = price;
             this.usableBy = usableBy;
         }
 

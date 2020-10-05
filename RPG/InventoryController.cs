@@ -131,7 +131,7 @@ namespace RPG
             return inventory;
         }
 
-        public static ItemSlot[] InitalizeInventory(Helmet h, Chest c, Leg l, Foot f, Weapon w, Ring r1, Ring r2, Trinket t1, Trinket t2, Item i1, Item i2, Item i3, Item i4, Item i5)
+        /*public static ItemSlot[] InitalizeInventory(Helmet h, Chest c, Leg l, Foot f, Weapon w, Ring r1, Ring r2, Trinket t1, Trinket t2, Item i1, Item i2, Item i3, Item i4, Item i5)
         {
             ItemSlot[] inventory = new ItemSlot[14];
             inventory[0] = new HelmetSlot(h);
@@ -149,7 +149,7 @@ namespace RPG
             inventory[12] = new InventorySlot(i4);
             inventory[13] = new InventorySlot(i5);
             return inventory;
-        }
+        }*/
 
 
 

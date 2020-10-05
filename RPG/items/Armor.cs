@@ -9,10 +9,12 @@ namespace RPG.items
 
     abstract class Armor : Item
     {
-        private double armor;
-        public Armor(string name, int id, int stre, int dext, int inte, int cons, int luck, Caste usableBy, double armor) : base(name, id, stre, dext, inte, cons, luck, usableBy)
+        private int armor;
+        public Armor(string name, int id, int stre, int dext, int inte, int cons, int luck, Caste usableBy, int armor, double price) : base(name, id, stre, dext, inte, cons, luck, usableBy, price)
         {
             this.armor = armor;
         }
+
+        public int Arm { get => armor; }
     }
 }

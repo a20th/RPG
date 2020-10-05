@@ -12,7 +12,7 @@ namespace RPG.items
         {
         }
 
-        public Ring(int id, int stre, int dext, int inte, int cons, int luck, Caste usableBy, string name) : base(name, id, stre, dext, inte, cons, luck, usableBy)
+        public Ring(int id, int stre, int dext, int inte, int cons, int luck, Caste usableBy, string name, double price) : base(name, id, stre, dext, inte, cons, luck, usableBy, price)
         {
 
         }

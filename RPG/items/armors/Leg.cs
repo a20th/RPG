@@ -13,10 +13,10 @@ namespace RPG.items.armors
          */
         public override Type CanBePlaced { get; } = new LegSlot().GetType();
 
-        public Leg(string name, int id, int stre, int dext, int inte, int cons, int luck, Caste usableBy, double armor) : base(name, id, stre, dext, inte, cons, luck, usableBy, armor)
+        public Leg(string name, int id, int stre, int dext, int inte, int cons, int luck, Caste usableBy, int armor, double price) : base(name, id, stre, dext, inte, cons, luck, usableBy, armor, price)
         {
         }
-        public Leg() : base(null, -1, -1, -1, -1, -1, -1, null, -1)
+        public Leg() : base(null, -1, -1, -1, -1, -1, -1, null, -1, -1)
         {
             //Típuslekérdezéshez
         }

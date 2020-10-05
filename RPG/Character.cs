@@ -14,32 +14,27 @@ namespace RPG
 
         protected Caste caste;
 
-        protected int strength;
-        protected int dexterity;
-        protected int intelligence;
-        protected int constitution;
-        protected int luck;
+        
 
-        protected Character(int level, int strength, int dexterity, int intelligence, int constitution, int luck, string name, Caste caste)
+        protected int armor;
+
+        protected Character(int level, string name, int armor, Caste caste)
         {
             this.level = level;
-            this.strength = strength;
-            this.dexterity = dexterity;
-            this.intelligence = intelligence;
-            this.constitution = constitution;
-            this.luck = luck;
+            
             this.name = name;
             this.caste = caste;
+            this.armor = armor;
         }
 
 
-        public double Strength { get => strength; }
-        public double Dexterity { get => dexterity;  }
-        public double Intelligence { get => intelligence;  }
-        public double Constitution { get => constitution;  }
-        public double Luck { get => luck;  }
-        public double Hitpoints { get => hpmodifier * constitution * (level + 1); }
+        public virtual double Strength { get => caste.Smod * level * caste.S; }
+        public virtual double Dexterity { get =>  caste.D * caste.Dmod * level;  }
+        public virtual double Intelligence { get => caste.I * caste.Imod * level;  }
+        public virtual double Constitution { get => caste.C * caste.Cmod * level;  }
+        public virtual double Luck { get => caste.L * caste.Lmod * level; }
+        public double Hitpoints { get => hpmodifier * Constitution * (level + 1); }
         public string Name { get => name;}
-        
+        public virtual int Armor { get => armor;  }
     }
 }
