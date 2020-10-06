@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RPG.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,5 +20,14 @@ namespace RPG.itemslots
 
         public override Type UseableItem { get; } = new Weapon().GetType();
         public override Item slotItem { get; set; }
+
+        public override string ToString()
+        {
+            if (slotItem == null)
+            {
+                return "WeaponSlot: *Empty*";
+            }
+            return "WeaponSlot: " + slotItem.Name;
+        }
     }
 }

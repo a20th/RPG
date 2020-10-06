@@ -8,9 +8,10 @@ namespace RPG.characters
 {
     class Monster : Character
     {
-        public Monster(int level, string name, int armor, Caste caste) : base(level, name, armor, caste)
+        public Monster(int level, string name, int armor, Caste caste) : base(name, armor, caste)
         {
             hpmodifier = 3.2;
+            this.level = level;
         }
     }
 }

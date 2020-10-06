@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RPG.items;
+using RPG.Items;
 
 namespace RPG.itemslots
 {
@@ -20,5 +20,14 @@ namespace RPG.itemslots
 
         public override Type UseableItem { get; } = new Trinket().GetType().BaseType;
         public override Item slotItem { get; set; }
+
+        public override string ToString()
+        {
+            if(slotItem == null)
+            {
+                return "InventorySlot: *Empty*";
+            }
+            return "InventorySlot: " + slotItem.Name;
+        }
     }
 }

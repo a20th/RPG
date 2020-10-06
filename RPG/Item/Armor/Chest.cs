@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using RPG.itemslots;
 
-namespace RPG.items.armors
+namespace RPG.Items.Armors
 {
     class Chest : Armor
     {
-        public override Type CanBePlaced { get; } = new HelmetSlot().GetType();
+        //public override Type CanBePlaced { get; } = new HelmetSlot().GetType();
 
         
 

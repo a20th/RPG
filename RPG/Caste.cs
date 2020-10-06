@@ -6,22 +6,23 @@ using System.Threading.Tasks;
 
 namespace RPG
 {
-    class Caste
+    public class Caste
     {
-        public int Smod { get; private set; }
-        public int Dmod { get; private set; }
-        public int Imod { get; private set; }
-        public int Cmod { get; private set; }
-        public int Lmod { get; private set; }
+        public double Smod { get; private set; }
+        public double Dmod { get; private set; }
+        public double Imod { get; private set; }
+        public double Cmod { get; private set; }
+        public double Lmod { get; private set; }
         public int S { get; }
         public int D { get; }
         public int I { get; }
         public int C { get; }
         public int L { get; }
+        public string Name { get; private set; }
 
         /*  Használható itemek :( */
 
-        public Caste(int smod, int dmod, int imod, int cmod, int lmod, int armor, int s, int d, int i, int c, int l)
+        public Caste(string name, double smod, double dmod, double imod, double cmod, double lmod, int s, int d, int i, int c, int l)
         {
             Smod = smod;
             Dmod = dmod;
@@ -33,6 +34,7 @@ namespace RPG
             I = i;
             C = c;
             L = l;
+            Name = name;
         }
 
         

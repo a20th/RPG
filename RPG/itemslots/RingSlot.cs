@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RPG.items;
+using RPG.Items;
 
 namespace RPG.itemslots
 {
@@ -21,5 +21,14 @@ namespace RPG.itemslots
 
         public override Type UseableItem { get; } = new Ring().GetType();
         public override Item slotItem { get; set; }
+
+        public override string ToString()
+        {
+            if (slotItem == null)
+            {
+                return "RingSlot: *Empty*";
+            }
+            return "RingSlot: " + slotItem.Name;
+        }
     }
 }

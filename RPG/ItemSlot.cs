@@ -2,7 +2,7 @@
 
 namespace RPG
 {
-     abstract class ItemSlot
+     public abstract class ItemSlot
      {
         public abstract Type UseableItem { get; }
         public abstract Item slotItem { get; set; }
@@ -13,5 +13,7 @@ namespace RPG
             slotItem = item;
         }
 
-}
+        public abstract override string ToString();
+        
+    }
 }

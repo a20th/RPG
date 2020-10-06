@@ -49,8 +49,9 @@
     <Compile Include="characters\Monster.cs" />
     <Compile Include="characters\Player.cs" />
     <Compile Include="Caste.cs" />
+    <Compile Include="InventoryEnum.cs" />
     <Compile Include="Items.cs" />
-    <Compile Include="InventoryController.cs" />
+    <Compile Include="InventorySystem.cs" />
     <Compile Include="itemslots\RingSlot.cs" />
     <Compile Include="itemslots\InventorySlot.cs" />
     <Compile Include="itemslots\TrinketSlot.cs" />
@@ -59,20 +60,21 @@
     <Compile Include="itemslots\FootSlot.cs" />
     <Compile Include="itemslots\ChestSlot.cs" />
     <Compile Include="itemslots\HelmetSlot.cs" />
-    <Compile Include="items\armors\Foot.cs" />
-    <Compile Include="items\armors\Chest.cs" />
-    <Compile Include="items\armors\Leg.cs" />
-    <Compile Include="items\armors\Helmet.cs" />
+    <Compile Include="Item\Armor\Foot.cs" />
+    <Compile Include="Item\Armor\Chest.cs" />
+    <Compile Include="Item\Armor\Leg.cs" />
+    <Compile Include="Item\Armor\Helmet.cs" />
     <Compile Include="ItemSlot.cs" />
-    <Compile Include="items\Ring.cs" />
-    <Compile Include="items\Trinket.cs" />
-    <Compile Include="items\Armor.cs" />
+    <Compile Include="Item\Ring.cs" />
+    <Compile Include="Item\Trinket.cs" />
+    <Compile Include="Item\Armor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="items\Weapon.cs" />
+    <Compile Include="Item\Weapon.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

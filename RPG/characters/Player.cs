@@ -1,6 +1,7 @@
-﻿using RPG.items;
-using RPG.items.armors;
+﻿using RPG.Items;
+using RPG.Items.Armors;
 using RPG.itemslots;
+using RPG;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,28 +14,26 @@ namespace RPG.characters
     {
         protected string gender;
         private bool EmptyInventory;
-        ItemSlot[] inventory;
         private int strength;
         private int dexterity;
         private int intelligence;
         private int constitution;
         private int luck;
 
-
         /* Felszerelés rendszer helye */
 
-        public Player(int level, int strength, int dexterity, int intelligence, int constitution, int luck, int xp, string name, int armor, Caste caste, string gender, ItemSlot[] inventory) : base(level, name, armor, caste)
+        public Player(int strength, int dexterity, int intelligence, int constitution, int luck, int xp, string name, int armor, Caste caste, string gender, Item[] inv, double money) : base(name, armor, caste)
         {
-            this.gender = gender + 20;
+            this.gender = gender;
             this.strength = strength + 20;
             this.dexterity = dexterity + 20;
             this.intelligence = intelligence + 20;
             this.constitution = constitution + 20;
-            this.luck = luck;
+            this.luck = luck + 20;
             Xp = xp;
             hpmodifier = 5;
             
-            foreach(ItemSlot item in inventory)
+            foreach(Item item in inv)
             {
                 if(item != null)
                 {
@@ -44,11 +43,11 @@ namespace RPG.characters
 
             if (EmptyInventory)
             {
-                this.inventory = inventory;
+                Inventory = new InventorySystem();
             }
             else
             {
-                this.inventory = InventoryController.InitalizeInventory();
+                Inventory = new InventorySystem(inv, money);
             }
            
         }
@@ -73,7 +72,7 @@ namespace RPG.characters
         public override double Constitution { get => caste.C + constitution + calculateStat("con"); }
         public override double Luck { get => caste.L + luck + calculateStat("luc"); }
         public override int Armor { get => armor + calculateStat("arm"); }
-        public double Money { get; private set; }
+        
         
 
         /*private int calculateLevel(int xpmod, int lvl)
@@ -107,41 +106,41 @@ namespace RPG.characters
             switch (arg)
             {
                 case "str":
-                    if(Money >= (strength - 20) * 0.25)
+                    if(Inventory.Money >= (strength - 20) * 0.25)
                     {
-                        Money -= (strength - 20) * 0.25;
+                        Inventory.ChangeMoney(-(strength - 20) * 0.25);
                         strength++;
                     }
                     break;
 
                 case "dex":
-                    if (Money >= (dexterity - 20) * 0.25)
+                    if (Inventory.Money >= (dexterity - 20) * 0.25)
                     {
-                        Money -= (dexterity - 20) * 0.25;
+                        Inventory.ChangeMoney(-(dexterity - 20) * 0.25);
                         dexterity++;
                     }
                     break;
 
                 case "int":
-                    if (Money >= (intelligence - 20) * 0.25)
+                    if (Inventory.Money >= (intelligence - 20) * 0.25)
                     {
-                        Money -= (intelligence - 20) * 0.25;
+                        Inventory.ChangeMoney(-(intelligence - 20) * 0.25);
                         intelligence++;
                     }
                     break;
 
                 case "con":
-                    if (Money >= (constitution - 20) * 0.25)
+                    if (Inventory.Money >= (constitution - 20) * 0.25)
                     {
-                        Money -= (constitution - 20) * 0.25;
+                        Inventory.ChangeMoney(-(constitution - 20) * 0.25);
                         constitution++;
                     }
                     break;
 
                 case "luc":
-                    if (Money >= (luck - 20) * 0.25)
+                    if (Inventory.Money >= (luck - 20) * 0.25)
                     {
-                        Money -= (luck - 20) * 0.25;
+                        Inventory.ChangeMoney((luck - 20) * 0.25);
                         luck++;
                     }
                     break;
@@ -157,9 +156,9 @@ namespace RPG.characters
             switch (arg)
             {
                 case "str":
-                    foreach(ItemSlot item in inventory)
+                    foreach(ItemSlot item in Inventory)
                     {
-                        if (item.GetType() != new InventorySlot().GetType())
+                        if (item.GetType() != new InventorySlot().GetType() && item.slotItem != null)
                         {
                             stat += item.slotItem.Stre;
                         }
@@ -167,9 +166,9 @@ namespace RPG.characters
                     return stat;
 
                 case "dex":
-                    foreach (ItemSlot item in inventory)
+                    foreach (ItemSlot item in Inventory)
                     {
-                        if (item.GetType() != new InventorySlot().GetType())
+                        if (item.GetType() != new InventorySlot().GetType() && item.slotItem != null)
                         {
                             stat += item.slotItem.Dext;
                         }
@@ -177,9 +176,9 @@ namespace RPG.characters
                     return stat;
 
                 case "int":
-                    foreach (ItemSlot item in inventory)
+                    foreach (ItemSlot item in Inventory)
                     {
-                        if (item.GetType() != new InventorySlot().GetType())
+                        if (item.GetType() != new InventorySlot().GetType() && item.slotItem != null)
                         {
                             stat += item.slotItem.Inte;
                         }
@@ -187,9 +186,9 @@ namespace RPG.characters
                     return stat;
 
                 case "con":
-                    foreach (ItemSlot item in inventory)
+                    foreach (ItemSlot item in Inventory)
                     {
-                        if (item.GetType() != new InventorySlot().GetType())
+                        if (item.GetType() != new InventorySlot().GetType() && item.slotItem != null)
                         {
                             stat += item.slotItem.Cons;
                         }
@@ -197,9 +196,9 @@ namespace RPG.characters
                     return stat;
 
                 case "luc":
-                    foreach (ItemSlot item in inventory)
+                    foreach (ItemSlot item in Inventory)
                     {
-                        if (item.GetType() != new InventorySlot().GetType())
+                        if (item.GetType() != new InventorySlot().GetType() && item.slotItem != null)
                         {
                             stat += item.slotItem.Luck;
                         }
@@ -207,9 +206,9 @@ namespace RPG.characters
                     return stat;
 
                 case "armor":
-                    foreach (ItemSlot item in inventory)
+                    foreach (ItemSlot item in Inventory)
                     {
-                        if (item.GetType() != new InventorySlot().GetType() && item.slotItem.GetType() == new Helmet().GetType().BaseType)
+                        if (item.GetType() != new InventorySlot().GetType() && item.slotItem.GetType() == new Helmet().GetType().BaseType && item.slotItem != null)
                         {
                             Armor a = item.slotItem as Armor;
                             stat += a.Arm;                        
@@ -223,11 +222,25 @@ namespace RPG.characters
             
         }
 
+        public override string ToString()
+        {
+            string text;
+            text = Name + ", a " + gender + " " + caste.Name + "\n";
+            text +="Strength: " + Strength +" Dexterity: "+ Dexterity + " Intelligence: "+ Intelligence + " Constitution: " +Constitution + " Luck: " + Luck + " Armor: " + Armor + "\n";
+            foreach(ItemSlot item in Inventory)
+            {
+                text += item + "\n";
+            }
+            return text;
+        }
+
         public new string Name { get => name;
             set {
                 //Foglalt név ellenőrzés :(
                 name = value;
             }
-        }       
+        }
+
+        public InventorySystem Inventory { get; }
     }
 }

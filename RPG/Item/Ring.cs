@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPG.items
+namespace RPG.Items
 {
     class Ring : Item
     {
@@ -17,6 +17,7 @@ namespace RPG.items
 
         }
 
-        public override Type CanBePlaced => throw new NotImplementedException();
+        //public override Type CanBePlaced => throw new NotImplementedException();
     }
 }
+

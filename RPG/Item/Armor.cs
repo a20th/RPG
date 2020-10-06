@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPG.items
+namespace RPG.Items
 {
 
     abstract class Armor : Item

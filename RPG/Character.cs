@@ -18,15 +18,13 @@ namespace RPG
 
         protected int armor;
 
-        protected Character(int level, string name, int armor, Caste caste)
-        {
-            this.level = level;
-            
+        protected Character(string name, int armor, Caste caste)
+        { 
             this.name = name;
             this.caste = caste;
             this.armor = armor;
         }
-
+        
 
         public virtual double Strength { get => caste.Smod * level * caste.S; }
         public virtual double Dexterity { get =>  caste.D * caste.Dmod * level;  }

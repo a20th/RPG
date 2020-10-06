@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace RPG
 {
-    abstract class Item
+    public abstract class Item
     {
-        protected string name;
+        private string name;
         protected int id;
 
         protected int stre;
@@ -19,13 +19,13 @@ namespace RPG
 
         protected Caste usableBy;
 
-        public abstract Type CanBePlaced { get; }
         public int Stre { get => stre; }
         public int Dext { get => dext; }
         public int Inte { get => inte; }
         public int Cons { get => cons; }
         public int Luck { get => luck; }
         public double Price { get; }
+        public string Name { get => name; }
 
         protected Item(string name, int id, int stre, int dext, int inte, int cons, int luck, Caste usableBy, double price)
         {
@@ -45,6 +45,7 @@ namespace RPG
 
         }
 
+        //public abstract override string ToString();
         
     }
 }
